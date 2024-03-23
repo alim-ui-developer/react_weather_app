@@ -1,38 +1,71 @@
-.App {
-  text-align: center;
+body{
+  height:100vh;
+  background:url('https://static.vecteezy.com/system/resources/previews/016/655/391/non_2x/sky-background-nature-sky-blue-background-cloud-light-summer-day-sunny-weather-space-clear-sun-white-high-beautiful-landscape-outdoors-sunlight-cloudy-outdoor-abstract-wallpaper-free-photo.jpg') 50% 50% no-repeat;
+  background-size:cover;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.wrapper{
+  width:100vw;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.container{
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  background:#fff;
+  width:60%;
+  min-width:500px;
+  max-width:1000px;
+  padding:50px;
+  box-sizing:border-box;
+}
+
+.weatherBox{
+  .title{
+    display:flex;
+    align-items: flex-end;
+    em{
+      font-size:80px;
+      line-height:1;
+    }
+    span{
+      display:flex;
+      &::before{
+        display:inline-block;
+        content:"/";
+        font-size:30px;
+        color:silver;
+        margin:0 10px;
+      }
+    }
+  }
+  .temp{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-size:30px;
+    padding-top:30px;
+  }
+  .description{
+    display:flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.buttonBox{
+  display:flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+  flex-wrap: wrap;
+  margin-top:10px;
+  button{
+    margin:5px;
   }
 }
