@@ -1,12 +1,18 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
 
-const WeatherButton = ({cityArr, setCity}) => {
+const WeatherButton = ({selectedCity, cityArr, setCity}) => {
+  //const [isOn, setIsOn] = useState('');
   return (
     <>
-      <Button variant="outline-warning">Current Location</Button>
+      <button onClick={() => setCity('')} className='btn_currentLocation'>🌏 현재 나의 위치</button>
       {cityArr.map((item, index) => (
-        <Button variant="outline-warning" key={index} onClick={() => setCity(item)}>{item}</Button>
+        <button 
+          key={index}
+          onClick={() => setCity(item)}
+          className={`btn_${item} ${item === selectedCity && 'on'}`}>
+          <span>{item}</span>
+        </button>
       ))}
     </>
   )

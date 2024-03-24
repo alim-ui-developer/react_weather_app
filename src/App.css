@@ -1,27 +1,53 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes vibe {
+  0% {
+    transform: rotate(2deg);
+  }
+  100% {
+    transform: rotate(-2deg);
+  }
+}
+
+.leftBox, .rightBox{
+  animation: fadeIn 1000ms;
+}
+
 body{
-  height:100vh;
+  width:100%;
+  min-height:100vh;
   background:url('https://static.vecteezy.com/system/resources/previews/016/655/391/non_2x/sky-background-nature-sky-blue-background-cloud-light-summer-day-sunny-weather-space-clear-sun-white-high-beautiful-landscape-outdoors-sunlight-cloudy-outdoor-abstract-wallpaper-free-photo.jpg') 50% 50% no-repeat;
   background-size:cover;
 }
 
 .wrapper{
   width:100vw;
-  height:100vh;
+  min-height:100vh;
   display:flex;
   flex-direction:column;
   justify-content: center;
   align-items: center;
+  padding:50px 0;
+  box-sizing:border-box;
 }
 
 .container{
   display:flex;
-  flex-direction:column;
+  flex-direction: column;
   justify-content: center;
+  gap:50px;
+  width:900px;
+  height:1000px;
   align-items: center;
   background:#fff;
-  width:60%;
-  min-width:500px;
-  max-width:1000px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.3);
   padding:50px;
   box-sizing:border-box;
 }
@@ -30,42 +56,249 @@ body{
   .title{
     display:flex;
     align-items: flex-end;
+    justify-content: center;
     em{
       font-size:80px;
       line-height:1;
     }
     span{
       display:flex;
+      align-items: center;
       &::before{
         display:inline-block;
         content:"/";
-        font-size:30px;
+        font-size:24px;
         color:silver;
-        margin:0 10px;
+        margin:0 15px;
       }
     }
   }
   .temp{
-    display:flex;
-    align-items: center;
-    justify-content: center;
     font-size:30px;
+    text-align:center;
     padding-top:30px;
+    sup{
+      font-size:18px;
+    }
   }
   .description{
     display:flex;
     align-items: center;
     justify-content: center;
+    margin:10px 0 20px;
+    font-size:14px;
+    line-height:40px;
+    i{
+      display:block;
+      width:40px;
+      height:40px;
+      img{
+        width:100%;
+        height:auto;
+      }
+    }
+  }
+} 
+
+.ootdBox{
+  text-align:center;
+  width: 100%;
+  border-top: 1px solid silver;
+  padding-top:30px;
+  .ootdImage{
+    width:220px;
+    height:86px;
+    background-image:url('https://www.kyeongin.com/mnt/file/201810/20181029000711166_1.jpg');
+    background-repeat:no-repeat;
+    background-size:740px auto;
+    margin:0 auto 20px;
+    &.temp_under4{
+      background-position:-488px -800px;
+    }
+    &.temp_5to8{
+      background-position:-488px -718px;
+    }
+    &.temp_9to11{
+      background-position:-488px -626px;
+    }
+    &.temp_12to16{
+      background-position:-488px -530px;
+    }
+    &.temp_17to19{
+      background-position:-488px -446px;
+    }
+    &.temp_20to22{
+      background-position:-488px -360px;
+    }
+    &.temp_23to27{
+      background-position:-476px -270px;
+    }
+    &.temp_over28{
+      background-position:-476px -186px;
+    }
+  }
+  .ootdText{
+    font-size:14px;
+    em{
+      font-weight:800;
+    }
+  }
+  .btn_shopping{
+    display:block;
+    width:120px;
+    font-size:12px;
+    padding:10px;
+    border-radius:5px;
+    background:black;
+    color:white;
+    text-decoration: none;
+    margin:10px auto 0;
+    &:hover{
+      background:crimson;
+      animation: vibe 100ms infinite;
+    }
+  }
+}
+
+.rightBox{
+  position:relative;
+  h3{
+    font-size:18px;
+    margin-bottom:20px;
   }
 }
 
 .buttonBox{
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top:10px;
+  position:relative;
+  position:absolute;
+  z-index:10;
+  bottom:0;
+  right:0;
+  width:800px;
+  height:440px;
   button{
-    margin:5px;
+    position:absolute;
+    width:auto;
+    border:none;
+    background:none;
+    font-size:13px;
+    text-transform: capitalize;
+    color:#fff;
+    cursor:pointer;
+    &:not(.btn_currentLocation){
+      transform:translateY(0);
+      transition: transform linear 300ms;
+      span{
+        display:block;
+        padding:10px 20px;
+        background:steelblue;
+        border-radius:5px;
+        transition:all linear 300ms;
+      }
+      &::after{
+        display:block;
+        content:'';
+        width: 0;
+        height: 0;
+        border: 8px solid transparent;
+        border-bottom-width: 0;
+        border-top-color:steelblue;
+        margin:0 auto;
+        transition:all linear 300ms;
+      }
+      &:hover{
+        transform:translateY(-2px);
+        span{
+          background:CornflowerBlue;
+        }
+        &::after{
+          border-top-color:CornflowerBlue;
+        }
+      }
+      &.on{
+        span{
+          background:DeepPink;
+        }
+        &::after{
+          border-top-color:DeepPink;
+        }
+      }
+    }
+    &.btn_currentLocation{
+      top:15px;
+      right:15px;
+      padding:10px 20px;
+      border-radius:5px;
+      background:dodgerBlue;
+      font-weight:800;
+      transition:all linear 300ms;
+      
+      &:hover{
+        background:darkblue;
+      }
+    }
+    &.btn_seoul{
+      top: 115px;
+      right: 115px;
+    }
+    &.btn_wellington{
+      bottom: 80px;
+      right: 5px;  
+    }
+    &.btn_toronto{
+      top: 95px;
+      left: 150px;
+    }
+    &.btn_cancun{
+      top: 160px;
+      left: 118px;
+    }
+    &.btn_venezia{
+      top: 95px;
+      left: 343px;
+    }
+    &.btn_reykjavik{
+      top: 45px;
+      left: 283px;
+    }
+    &.btn_bangkok{
+      top: 175px;
+      right: 150px;
+    }
+    &.btn_honolulu{
+      top: 140px;
+      left: 15px;
+    }
+    &.btn_dubai{
+      top: 150px;
+      right: 270px;
+    }
+    &.btn_brasilia{
+      bottom: 135px;
+      left: 210px;
+    }
+    &.btn_nairobi{
+      bottom: 185px;
+      right: 300px;
+    }
+    &.btn_ulaanbaatar{
+      top: 85px;
+      right: 180px;
+    }
+  }
+}
+
+.img_map{
+  width:800px;
+  height:440px;
+  padding:50px;
+  box-sizing:border-box;
+  background:aliceblue;
+  border:1px solid silver;
+  img{
+    width:100%;
+    height:auto;
+    filter: grayscale(1); 
+    opacity:0.5;
   }
 }
